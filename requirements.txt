@@ -1,0 +1,21 @@
+# Financial Digital Twin — dependencies
+# Install:  pip install -r requirements.txt
+
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.3
+scipy>=1.10
+
+# dashboard
+streamlit>=1.30
+plotly>=5.18
+
+# live SEC EDGAR / FRED ingestion
+requests>=2.31
+
+# tests
+pytest>=7.0
+
+# optional: LSTM baseline. The project runs without it — the forecasting
+# layer detects torch and skips the LSTM if unavailable.
+# torch>=2.0          # ~2.5 GB; install separately with: pip install torch

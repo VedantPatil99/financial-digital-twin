@@ -1,0 +1,7 @@
+scenario,gp_identity,gp_direct,gap,gap_pct_of_gp
+Baseline,54770.0,54770.0,0.0,0.0
+Inflation spike,48068.93,51682.79,3613.87,7.52
+Demand contraction,42654.51,42284.27,-370.25,-0.87
+Supply chain disruption,44011.14,51726.17,7715.03,17.53
+Currency shock,51167.78,51043.22,-124.56,-0.24
+Stagflation,38112.22,42404.91,4292.69,11.26

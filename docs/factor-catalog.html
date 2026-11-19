@@ -1,0 +1,558 @@
+<title>Financial Twin Factor Catalog</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --ground:      #f2f5f7;
+    --panel:       #ffffff;
+    --panel-2:     #eaeff2;
+    --ink:         #0e1720;
+    --ink-2:       #465866;
+    --ink-3:       #6d818f;
+    --rule:        #d3dde3;
+    --rule-soft:   #e3eaef;
+    --accent:      #0f6f8c;
+    --accent-soft: #dceef4;
+    --have:        #1a6f4a;
+    --have-bg:     #dcefe4;
+    --sec:         #0f6f8c;
+    --sec-bg:      #dcedf3;
+    --new:         #96620a;
+    --new-bg:      #f6ead2;
+    --none:        #97403f;
+    --none-bg:     #f4dede;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground:      #0d1419;
+      --panel:       #141e25;
+      --panel-2:     #1b272f;
+      --ink:         #e6eef3;
+      --ink-2:       #a7bcc9;
+      --ink-3:       #7d94a2;
+      --rule:        #26353f;
+      --rule-soft:   #1e2b34;
+      --accent:      #4bb8d8;
+      --accent-soft: #14323d;
+      --have:        #52c58c;
+      --have-bg:     #123027;
+      --sec:         #4bb8d8;
+      --sec-bg:      #12303a;
+      --new:         #e0a83c;
+      --new-bg:      #33270f;
+      --none:        #e07a78;
+      --none-bg:     #331b1b;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground:      #0d1419;
+    --panel:       #141e25;
+    --panel-2:     #1b272f;
+    --ink:         #e6eef3;
+    --ink-2:       #a7bcc9;
+    --ink-3:       #7d94a2;
+    --rule:        #26353f;
+    --rule-soft:   #1e2b34;
+    --accent:      #4bb8d8;
+    --accent-soft: #14323d;
+    --have:        #52c58c;
+    --have-bg:     #123027;
+    --sec:         #4bb8d8;
+    --sec-bg:      #12303a;
+    --new:         #e0a83c;
+    --new-bg:      #33270f;
+    --none:        #e07a78;
+    --none-bg:     #331b1b;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.62;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px 96px; }
+
+  h1, h2, h3 { font-family: Archivo, ui-sans-serif, system-ui, sans-serif; text-wrap: balance; margin: 0; }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11.5px; letter-spacing: .13em; text-transform: uppercase;
+    color: var(--accent); margin: 0;
+  }
+
+  /* ---- masthead ---- */
+  header {
+    border-bottom: 1px solid var(--rule);
+    padding: 68px 0 34px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  header h1 { font-size: clamp(30px, 4.4vw, 46px); font-weight: 700; letter-spacing: -.021em; line-height: 1.06; }
+  .standfirst { font-size: 18px; color: var(--ink-2); max-width: 63ch; margin: 0; }
+  .meta {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px; color: var(--ink-3);
+    display: flex; flex-wrap: wrap; gap: 8px 20px; padding-top: 6px;
+  }
+
+  section { padding-top: 60px; }
+  section > h2 {
+    font-size: 25px; font-weight: 650; letter-spacing: -.014em;
+    padding-bottom: 6px;
+  }
+  .lede { color: var(--ink-2); max-width: 66ch; margin: 12px 0 0; }
+
+  /* ---- the shocks vs levers panel ---- */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 26px; }
+  .half {
+    background: var(--panel); border: 1px solid var(--rule);
+    border-radius: 3px; padding: 22px 24px 24px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .half.is-gap { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+  .half h3 { font-size: 17px; font-weight: 650; letter-spacing: -.01em; }
+  .half p { margin: 0; color: var(--ink-2); font-size: 14.5px; }
+  .half ul { margin: 4px 0 0; padding-left: 18px; color: var(--ink-2); font-size: 14.5px; }
+  .half li { margin-bottom: 3px; }
+  .verdict {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-3); border-top: 1px solid var(--rule-soft); padding-top: 10px; margin-top: 4px;
+  }
+  .half.is-gap .verdict { color: var(--accent); }
+
+  /* ---- family blocks ---- */
+  .family {
+    background: var(--panel); border: 1px solid var(--rule);
+    border-radius: 3px; margin-top: 24px; overflow: hidden;
+  }
+  .family-head {
+    padding: 20px 24px 18px; border-bottom: 1px solid var(--rule);
+    background: var(--panel-2);
+    display: flex; flex-direction: column; gap: 7px;
+  }
+  .family-head h3 { font-size: 19px; font-weight: 650; letter-spacing: -.012em; }
+  .family-head p { margin: 0; color: var(--ink-2); font-size: 14.5px; max-width: 72ch; }
+  .provenance {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11.5px; color: var(--ink-3);
+  }
+
+  .tablescroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14.2px; }
+  th {
+    text-align: left; font-weight: 600; font-size: 11.5px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3);
+    padding: 12px 16px; border-bottom: 1px solid var(--rule); white-space: nowrap;
+  }
+  td { padding: 12px 16px; border-bottom: 1px solid var(--rule-soft); vertical-align: top; color: var(--ink-2); }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { color: var(--ink); font-weight: 500; white-space: nowrap; }
+  td.src { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.4px; }
+
+  .badge {
+    display: inline-block; white-space: nowrap;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px; letter-spacing: .05em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 2px; font-weight: 500;
+  }
+  .b-have { background: var(--have-bg); color: var(--have); }
+  .b-sec  { background: var(--sec-bg);  color: var(--sec); }
+  .b-new  { background: var(--new-bg);  color: var(--new); }
+  .b-none { background: var(--none-bg); color: var(--none); }
+
+  /* ---- roadmap ---- */
+  .tier {
+    display: grid; grid-template-columns: 68px 1fr; gap: 22px;
+    padding: 24px 0; border-bottom: 1px solid var(--rule);
+  }
+  .tier:last-child { border-bottom: 0; }
+  .tier-n {
+    font-family: Archivo, sans-serif; font-size: 34px; font-weight: 700;
+    color: var(--accent); line-height: 1; letter-spacing: -.03em;
+  }
+  .tier-n small { display: block; font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: .1em; color: var(--ink-3); font-weight: 400; margin-top: 6px; text-transform: uppercase; }
+  .tier h3 { font-size: 17.5px; font-weight: 650; margin-bottom: 6px; }
+  .tier p { margin: 0 0 10px; color: var(--ink-2); font-size: 14.6px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip {
+    font-family: "IBM Plex Mono", monospace; font-size: 12px;
+    background: var(--accent-soft); color: var(--accent);
+    padding: 4px 9px; border-radius: 2px;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent); background: var(--panel);
+    padding: 18px 22px; margin-top: 24px; border-radius: 0 3px 3px 0;
+    border-top: 1px solid var(--rule); border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  }
+  .callout p { margin: 0; color: var(--ink-2); font-size: 14.8px; }
+  .callout strong { color: var(--ink); }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 22px; font-size: 13px; color: var(--ink-3); align-items: center; }
+
+  ol.src-list { padding-left: 20px; color: var(--ink-2); font-size: 14.4px; }
+  ol.src-list li { margin-bottom: 7px; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  @media (max-width: 760px) {
+    .split { grid-template-columns: 1fr; }
+    .tier { grid-template-columns: 1fr; gap: 10px; }
+    .wrap { padding: 0 18px 64px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Design input · BCSE497J Project 1</p>
+    <h1>Financial Twin Factor Catalog</h1>
+    <p class="standfirst">
+      What existing digital-twin platforms let you turn — and which of those dials
+      the Apple twin can actually support, given the data already in hand.
+    </p>
+    <div class="meta">
+      <span>Grounded in: Fed CCAR · Gartner DTO · BCG · NGFS · FP&amp;A practice</span>
+      <span>Current build: 4 factors</span>
+      <span>Catalogued: 38</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>The gap worth fixing first</h2>
+    <p class="lede">
+      Every factor in the twin today is something that <em>happens to</em> Apple. Commercial
+      platforms are built around the opposite: things management <em>chooses to do</em>. That
+      distinction is what separates a stress-test from a decision tool, and it is the single
+      largest structural gap in the current build.
+    </p>
+
+    <div class="split">
+      <div class="half">
+        <h3>External shocks — what you have</h3>
+        <p>The world acts on the firm. The question is survival: how bad does it get, and can we absorb it?</p>
+        <ul>
+          <li>Demand contraction</li>
+          <li>Input / supply cost</li>
+          <li>Inflation</li>
+          <li>FX translation</li>
+        </ul>
+        <p class="verdict">Answers “can we withstand it?”</p>
+      </div>
+      <div class="half is-gap">
+        <h3>Decision levers — what's missing</h3>
+        <p>The firm acts on itself. The question is strategy: of the moves available, which one is best?</p>
+        <ul>
+          <li>Pricing and product mix</li>
+          <li>R&amp;D and capex programmes</li>
+          <li>Buybacks, dividends, debt</li>
+          <li>Working-capital and supplier terms</li>
+        </ul>
+        <p class="verdict">Answers “what should we do?”</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>
+        <strong>Why this matters for the viva.</strong> Your proposal promises “strategic decision
+        intelligence” and evaluating decisions “before they are implemented.” A twin that only
+        accepts external shocks cannot evaluate a decision at all — it can only report damage.
+        Adding even two or three genuine levers is what makes the title accurate, and most of
+        them need no new data source.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Three traditions worth borrowing from</h2>
+    <p class="lede">
+      “Digital twin” means three fairly different things in practice. Your project sits at the
+      intersection, and each tradition contributes a different class of factor.
+    </p>
+
+    <div class="family">
+      <div class="tablescroll">
+        <table>
+          <thead>
+            <tr><th>Tradition</th><th>Representative platforms</th><th>What it contributes to your factor set</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Process / organisation twins</td>
+              <td class="src">Celonis, SAP Signavio, Ardoq, Mavim, iGrafx</td>
+              <td>Gartner's DTO market: business-operations modelling, scenario testing and root-cause analysis over a live operational model. Contributes the idea that the twin is a <em>model of the operating structure</em>, not just its financial output.</td>
+            </tr>
+            <tr>
+              <td>Driver-based planning (FP&amp;A)</td>
+              <td class="src">Anaplan, Pigment, Workday Adaptive, Oracle EPM</td>
+              <td>Revenue is decomposed into the operational quantities that produce it — volume, price, headcount, conversion, churn — so a plan can be changed at the driver rather than at the total. Contributes nearly all of the internal levers.</td>
+            </tr>
+            <tr>
+              <td>Regulatory stress testing</td>
+              <td class="src">Fed CCAR / DFAST, Bank of England, NGFS</td>
+              <td>A published, defensible, externally-calibrated shock vocabulary: 28 domestic plus 12 international variables, with severities set by the regulator rather than the modeller. Contributes rigour and citability to the macro layer.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The factor catalogue</h2>
+    <p class="lede">
+      Six families. Each factor is marked by what it would cost you to add it — which matters far
+      more than whether it sounds impressive.
+    </p>
+    <div class="legend">
+      <span class="badge b-have">In the twin</span>
+      <span class="badge b-sec">Data in hand</span>
+      <span class="badge b-new">New source</span>
+      <span class="badge b-none">Not disclosed</span>
+    </div>
+
+    <!-- 1 -->
+    <div class="family">
+      <div class="family-head">
+        <h3>1 · Macro-financial</h3>
+        <p>The externally-calibrated shock vocabulary. Adopting the Fed's variable list wholesale means your scenario severities are defensible by citation rather than by assertion.</p>
+        <p class="provenance">Source of truth: Federal Reserve supervisory scenarios · FRED</p>
+      </div>
+      <div class="tablescroll">
+        <table>
+          <thead><tr><th>Factor</th><th>What it tests</th><th>Series</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Real GDP growth</td><td>Aggregate demand conditions</td><td class="src">GDPC1</td><td><span class="badge b-have">In the twin</span></td></tr>
+            <tr><td>CPI inflation</td><td>Input and pricing pressure</td><td class="src">CPIAUCSL</td><td><span class="badge b-have">In the twin</span></td></tr>
+            <tr><td>Unemployment</td><td>Consumer discretionary capacity</td><td class="src">UNRATE</td><td><span class="badge b-have">In the twin</span></td></tr>
+            <tr><td>Policy rate</td><td>Refinancing cost, discount rate</td><td class="src">FEDFUNDS</td><td><span class="badge b-have">In the twin</span></td></tr>
+            <tr><td>Treasury curve</td><td>Term structure; short vs long funding</td><td class="src">DGS3MO · DGS5 · DGS10</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>BBB corporate spread</td><td>Apple's actual marginal cost of debt — the missing link between rate shocks and interest expense</td><td class="src">BAMLC0A4CBBB</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Broad dollar index</td><td>Turns your FX prior into a fitted elasticity</td><td class="src">DTWEXBGS</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Equity index / VIX</td><td>Risk appetite; buyback timing</td><td class="src">SP500 · VIXCLS</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Regional GDP &amp; FX</td><td>Euro area, UK, Japan, developing Asia — matches Apple's reporting geographies</td><td class="src">FRED international</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>House / CRE prices</td><td>Central for banks; immaterial for Apple</td><td class="src">—</td><td><span class="badge b-none">Skip</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="family">
+      <div class="family-head">
+        <h3>2 · Business mix</h3>
+        <p>The highest-value family for Apple specifically, and it needs no data you cannot already reach. Services gross margin runs roughly double Products; a mix shift moves consolidated margin without any change in total revenue — an effect your current twin is structurally blind to.</p>
+        <p class="provenance">Source of truth: SEC XBRL segment dimensions (10-K/10-Q)</p>
+      </div>
+      <div class="tablescroll">
+        <table>
+          <thead><tr><th>Factor</th><th>What it tests</th><th>Series</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Products vs Services mix</td><td>Margin expansion from mix alone; the single biggest lever on Apple's P&amp;L</td><td class="src">SEC segment axis</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Segment gross margin</td><td>Separate cost structures instead of one blended COGS elasticity</td><td class="src">SEC segment axis</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Geographic mix</td><td>Greater China exposure, regional demand divergence</td><td class="src">SEC geographic axis</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Product line concentration</td><td>iPhone dependence — a single-line demand shock</td><td class="src">SEC product axis</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Installed base / units</td><td>Volume vs price decomposition</td><td class="src">Not disclosed since FY2018</td><td><span class="badge b-none">Not disclosed</span></td></tr>
+            <tr><td>Deferred revenue</td><td>Forward visibility on services</td><td class="src">ContractWithCustomerLiability</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="family">
+      <div class="family-head">
+        <h3>3 · Management decision levers</h3>
+        <p>The family that turns the portal into a decision tool. Each of these is a choice a CFO actually makes each quarter, and each is recoverable from the cash-flow statement you are already parsing.</p>
+        <p class="provenance">Source of truth: SEC XBRL cash-flow and income-statement tags</p>
+      </div>
+      <div class="tablescroll">
+        <table>
+          <thead><tr><th>Lever</th><th>What it tests</th><th>Series</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>R&amp;D budget</td><td>Cut R&amp;D to defend margin — and what it costs in later growth</td><td class="src">ResearchAndDevelopmentExpense</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Capex programme</td><td>Capacity and tooling investment vs free cash flow</td><td class="src">PaymentsToAcquirePropertyPlantAndEquipment</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Share buybacks</td><td>Why Apple's equity keeps shrinking and D/E keeps climbing — currently invisible to your twin</td><td class="src">PaymentsForRepurchaseOfCommonStock</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Dividend policy</td><td>Payout vs retained capital</td><td class="src">PaymentsOfDividends</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Debt issuance</td><td>Refinancing into a higher-rate environment</td><td class="src">Debt tags × BBB spread</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Pricing action</td><td>Price rise vs volume loss — needs an elasticity assumption, stated openly</td><td class="src">Structural prior</td><td><span class="badge b-new">New source</span></td></tr>
+            <tr><td>Supplier payment terms</td><td>Stretching DPO to fund working capital; directly moves the cash conversion cycle</td><td class="src">AccountsPayableCurrent</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Headcount plan</td><td>Opex scaling and cost per employee</td><td class="src">dei:EntityNumberOfEmployees (annual)</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Effective tax rate</td><td>Tax-policy change or repatriation</td><td class="src">IncomeTaxExpenseBenefit</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="family">
+      <div class="family-head">
+        <h3>4 · Supply chain</h3>
+        <p>Borrowed from supply-chain twins, where the state variables are physical rather than accounting. Mostly beyond public filings — but two entries are close enough to reach, and tariffs are the topical one.</p>
+        <p class="provenance">Source of truth: supply-chain twin practice (ToolsGroup, Kinaxis, Cosmo Tech)</p>
+      </div>
+      <div class="tablescroll">
+        <table>
+          <thead><tr><th>Factor</th><th>What it tests</th><th>Series</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Inventory days (DIO)</td><td>Buffer depth against disruption</td><td class="src">Derived — already computed</td><td><span class="badge b-have">In the twin</span></td></tr>
+            <tr><td>Tariff rate</td><td>Import duty on a manufacturing base concentrated in Asia; a live policy risk</td><td class="src">USTR / WTO schedules</td><td><span class="badge b-new">New source</span></td></tr>
+            <tr><td>Component cost index</td><td>Semiconductor and display input prices</td><td class="src">PPI semiconductors (FRED)</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Logistics cost</td><td>Freight-rate shocks</td><td class="src">Freightos / BDI</td><td><span class="badge b-new">New source</span></td></tr>
+            <tr><td>Supplier concentration</td><td>Single-source dependency</td><td class="src">Apple Supplier List (PDF, unstructured)</td><td><span class="badge b-new">New source</span></td></tr>
+            <tr><td>Lead time / on-time delivery</td><td>Core to operational twins; requires internal ERP data</td><td class="src">—</td><td><span class="badge b-none">Not disclosed</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="family">
+      <div class="family-head">
+        <h3>5 · Regulatory &amp; ESG</h3>
+        <p>BCG's argument for financial twins rests on integrating non-financial variables with financial ones so trade-offs become visible. For Apple, the regulatory entries are far more material than the climate ones.</p>
+        <p class="provenance">Source of truth: NGFS scenarios · Fed pilot climate scenario analysis</p>
+      </div>
+      <div class="tablescroll">
+        <table>
+          <thead><tr><th>Factor</th><th>What it tests</th><th>Series</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>App Store regulation</td><td>DMA and antitrust pressure on the highest-margin revenue line — arguably Apple's largest single idiosyncratic risk</td><td class="src">Scenario assumption</td><td><span class="badge b-new">New source</span></td></tr>
+            <tr><td>Corporate tax policy</td><td>Statutory rate and international tax reform</td><td class="src">Effective rate from filings</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Carbon price</td><td>NGFS transition risk on manufacturing and logistics</td><td class="src">NGFS scenario portal</td><td><span class="badge b-new">New source</span></td></tr>
+            <tr><td>Litigation / fines</td><td>One-off charges against operating income</td><td class="src">LossContingency tags</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Physical climate risk</td><td>Facility and supplier exposure</td><td class="src">NGFS physical scenarios</td><td><span class="badge b-new">New source</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="family">
+      <div class="family-head">
+        <h3>6 · Competitive dynamics</h3>
+        <p>The weakest family for a public-filings twin, and worth saying so explicitly rather than faking. Competitor data exists but is quarterly, lagged and not causally identified — you can include it descriptively without claiming it is a fitted mechanism.</p>
+        <p class="provenance">Source of truth: peer SEC filings via your existing client</p>
+      </div>
+      <div class="tablescroll">
+        <table>
+          <thead><tr><th>Factor</th><th>What it tests</th><th>Series</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Peer revenue growth</td><td>Is a downturn Apple-specific or sector-wide?</td><td class="src">SEC (MSFT, GOOGL, SSNLF)</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Peer margin trend</td><td>Industry-wide cost pressure</td><td class="src">SEC peers</td><td><span class="badge b-sec">Data in hand</span></td></tr>
+            <tr><td>Market share</td><td>Unit share shifts</td><td class="src">IDC / Counterpoint (paywalled)</td><td><span class="badge b-new">New source</span></td></tr>
+            <tr><td>Product cycle timing</td><td>The dominant driver of Apple's quarterly revenue — and the reason your macro R² is 0.03</td><td class="src">Launch calendar (hand-coded)</td><td><span class="badge b-new">New source</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Suggested order of work</h2>
+    <p class="lede">
+      Tiered by value per unit of effort, not by ambition. Tier 1 alone would take the portal from
+      four dials to roughly twenty, and closes the decision-lever gap.
+    </p>
+
+    <div class="tier">
+      <div class="tier-n">01<small>Next</small></div>
+      <div>
+        <h3>Levers and mix — no new data required</h3>
+        <p>
+          Everything here comes from SEC tags you are already fetching or FRED series you already
+          have credentials-free access to. This is where the phrase “decision intelligence” stops
+          being aspirational. Segment mix in particular gives the twin an effect it currently cannot
+          represent at all: margin moving while revenue does not.
+        </p>
+        <div class="chips">
+          <span class="chip">products vs services mix</span>
+          <span class="chip">geographic mix</span>
+          <span class="chip">buybacks &amp; dividends</span>
+          <span class="chip">R&amp;D budget</span>
+          <span class="chip">capex</span>
+          <span class="chip">effective tax rate</span>
+          <span class="chip">BBB spread → interest</span>
+          <span class="chip">dollar index → FX</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier">
+      <div class="tier-n">02<small>Then</small></div>
+      <div>
+        <h3>Full CCAR variable set and working-capital policy</h3>
+        <p>
+          Adopting the Fed's published variable list and severities makes your stress scenarios
+          externally defensible — you cite a regulator instead of defending a chosen number. Payment
+          terms and DSO/DPO policy connect directly to the negative cash conversion cycle you have
+          already documented.
+        </p>
+        <div class="chips">
+          <span class="chip">treasury curve</span>
+          <span class="chip">VIX &amp; equity</span>
+          <span class="chip">regional GDP</span>
+          <span class="chip">supplier terms</span>
+          <span class="chip">headcount</span>
+          <span class="chip">component PPI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier">
+      <div class="tier-n">03<small>If time</small></div>
+      <div>
+        <h3>External and qualitative factors</h3>
+        <p>
+          These need sources outside SEC and FRED, and several rest on assumptions rather than fitted
+          relationships. Worth attempting only once tiers 1 and 2 are solid — and worth labelling in
+          the UI as assumption-driven, so the distinction between estimated and assumed stays visible.
+        </p>
+        <div class="chips">
+          <span class="chip">tariffs</span>
+          <span class="chip">App Store regulation</span>
+          <span class="chip">carbon price</span>
+          <span class="chip">product cycle calendar</span>
+          <span class="chip">peer benchmarking</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>
+        <strong>One design rule to carry through.</strong> Keep estimated elasticities and assumed
+        priors visually distinct in the portal, exactly as the causal graph already separates
+        behavioural edges from accounting identities. Most Tier 3 factors cannot be fitted from
+        Apple's history — they are judgements. A twin that shows which is which is more credible
+        than one that presents every dial as if it were measured.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sources</h2>
+    <ol class="src-list">
+      <li><a href="https://www.federalreserve.gov/publications/2025-november-proposed-2026-stress-test-scenarios.htm">Proposed 2026 Stress Test Scenarios</a> — Board of Governors of the Federal Reserve System. The 28 domestic and 12 international variables, with severities.</li>
+      <li><a href="https://www.gartner.com/reviews/market/digital-twin-of-an-organization-platforms">Digital Twin of an Organization Platforms</a> — Gartner Peer Insights. Market definition and the three mandatory capability categories.</li>
+      <li><a href="https://www.bcg.com/publications/2022/why-companies-need-digital-financial-twins">Why Companies Need Digital Financial Twins</a> — BCG. Granular attribution and integration of non-financial variables.</li>
+      <li><a href="https://www.pigment.com/blog/the-importance-of-driver-based-planning">The importance of driver-based planning</a> — Pigment. Operational driver decomposition in FP&amp;A practice.</li>
+      <li><a href="https://www.anaplan.com/blog/put-drivers-in-front-steer-planning-with-confidence/">Driver-Based Planning</a> — Anaplan.</li>
+      <li><a href="https://www.ngfs.net/ngfs-scenarios-portal/">NGFS Scenarios Portal</a> — Network for Greening the Financial System. Transition and physical climate scenarios.</li>
+      <li><a href="https://www.federalreserve.gov/publications/2024-may-pilot-climate-scenario-analysis-transition-risk-module.htm">Pilot Climate Scenario Analysis: Transition Risk Module</a> — Federal Reserve.</li>
+      <li><a href="https://www.toolsgroup.com/blog/supply-chain-digital-twin/">Supply Chain Digital Twin</a> — ToolsGroup. Physical state variables in supply-chain twins.</li>
+      <li><a href="https://news.sap.com/2026/07/sap-leader-gartner-magic-quadrant-digital-twin-organization-platforms/">SAP named a Leader in the first Gartner Magic Quadrant for DTO Platforms</a> — SAP, July 2026.</li>
+    </ol>
+  </section>
+
+</div>

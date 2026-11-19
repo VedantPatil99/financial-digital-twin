@@ -1,0 +1,51 @@
+{
+  "gp_edge": {
+    "b_rev": 1.1147421616143833,
+    "b_infl": 0.8761597467622355,
+    "n": 63,
+    "r2": 0.925214704114748
+  },
+  "opening_residuals": {
+    "other_curr_assets": 67784.0,
+    "other_noncurr_assets": 182017.0,
+    "other_curr_liab": 84801.0,
+    "other_noncurr_liab": 55080.0,
+    "assets": 383266.0,
+    "balance_error": 0.0,
+    "period": "2026-06-27"
+  },
+  "decision": {
+    "horizon_quarters": 8,
+    "opening_cash": 39544.0,
+    "calibrated_buyback_pct_ocf": 0.7724230521856098,
+    "baseline_cash_min": 40270.33834391082,
+    "stagflation_cash_min": 38663.51486328517,
+    "stagflation_op_income_total": 247011.1226302341,
+    "baseline_op_income_total": 337946.4582819999,
+    "goal_seek_feasible": true,
+    "goal_seek_solution": 0.7638793945312501,
+    "goal_seek_achieved": 39543.80405236065,
+    "goal_seek_message": "Set Buyback intensity to 0.7639 \u00d7 OCF to reach Cash (lowest point) = 39,543.80.",
+    "stagflation_shocks": {
+      "inflation_yoy": 0.0858498282755189,
+      "supply_cost_shock": 0.1,
+      "demand_shock": -0.1,
+      "gdp_yoy": -0.05179030471149437
+    },
+    "persistence": 0.85
+  },
+  "lags": {
+    "gdp_yoy->revenue": 3,
+    "inflation_yoy->revenue": 3,
+    "demand_shock->revenue": 0,
+    "fx_shock->revenue": 0,
+    "revenue->cogs": 0,
+    "inflation_yoy->cogs": 3,
+    "supply_cost_shock->cogs": 0,
+    "revenue->opex": 3,
+    "inflation_yoy->opex": 2,
+    "cogs->inventory": 0,
+    "revenue->receivables": 0,
+    "cogs->payables": 0
+  }
+}

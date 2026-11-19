@@ -1,0 +1,13 @@
+target,model,n_estimators,MAPE,skill_vs_naive_%
+revenue,GBM_level_200,200,9.29,-9.359
+revenue,GBM_residual_200,200,7.825,7.88
+cogs,GBM_level_200,200,8.315,-13.87
+cogs,GBM_residual_200,200,6.714,8.058
+operating_income,GBM_level_200,200,13.131,3.154
+operating_income,GBM_residual_200,200,17.651,-30.181
+revenue,GBM_level_300,300,9.335,-9.895
+revenue,GBM_residual_300,300,7.933,6.608
+cogs,GBM_level_300,300,8.191,-12.161
+cogs,GBM_residual_300,300,6.833,6.423
+operating_income,GBM_level_300,300,13.03,3.902
+operating_income,GBM_residual_300,300,17.727,-30.746

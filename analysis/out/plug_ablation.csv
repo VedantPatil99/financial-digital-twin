@@ -1,0 +1,7 @@
+scenario,twin_max_balance_error,plug_model_max_gap_vs_own_cashflow,plug_gap_pct_of_twin_final_cash,plug_model_v2_max_gap,plug_v2_gap_pct_of_twin_final_cash,twin_min_current_ratio,twin_max_current_ratio,twin_offset_entry_max_per_quarter,twin_offset_entry_cumulative,twin_final_cash
+Baseline,0.0,93807.12,209.08,9867.69,21.99,0.97,1.0,44294.55,173440.06,44866.24
+Inflation spike,0.0,73835.39,171.75,7668.85,17.84,0.95,1.02,42128.61,178884.1,42990.94
+Demand contraction,0.0,64945.15,152.2,6608.46,15.49,0.98,1.03,41173.94,153310.62,42670.27
+Supply chain disruption,0.0,88698.36,213.29,9271.25,22.29,0.94,0.97,43742.22,163098.58,41585.28
+Currency shock,0.0,87624.79,198.06,9145.47,20.67,0.97,1.01,43631.39,160816.28,44242.38
+Stagflation,0.0,53689.66,131.65,5415.91,13.28,0.95,1.03,39801.38,161815.44,40782.82

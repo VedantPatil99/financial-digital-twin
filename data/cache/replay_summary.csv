@@ -1,0 +1,25 @@
+episode,mode,metric,MAPE_%
+COVID-19,conditional,revenue,2.1763648316368675e-15
+COVID-19,conditional,operating_income,3.0988380408202247
+COVID-19,conditional,gross_margin,1.2286433292192265
+COVID-19,conditional,cash,36.10265152561139
+COVID-19,macro,revenue,17.776286625444378
+COVID-19,macro,operating_income,29.332505191033004
+COVID-19,macro,gross_margin,2.0895663360041543
+COVID-19,macro,cash,28.74009603944248
+2022 inflation shock,conditional,revenue,0.0
+2022 inflation shock,conditional,operating_income,24.43512331955794
+2022 inflation shock,conditional,gross_margin,5.8300657665599465
+2022 inflation shock,conditional,cash,31.900467230246925
+2022 inflation shock,macro,revenue,41.78464567492408
+2022 inflation shock,macro,operating_income,48.050009241508626
+2022 inflation shock,macro,gross_margin,1.6108794932103865
+2022 inflation shock,macro,cash,73.40329837105145
+2018-19 China / trade tension,conditional,revenue,0.0
+2018-19 China / trade tension,conditional,operating_income,2.3681712707970175
+2018-19 China / trade tension,conditional,gross_margin,0.3271844408328861
+2018-19 China / trade tension,conditional,cash,41.860663218807744
+2018-19 China / trade tension,macro,revenue,11.339488535107137
+2018-19 China / trade tension,macro,operating_income,15.918010271441437
+2018-19 China / trade tension,macro,gross_margin,0.25220921376360783
+2018-19 China / trade tension,macro,cash,37.437048141838716

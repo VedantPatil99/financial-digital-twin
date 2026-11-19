@@ -1,0 +1,35 @@
+digraph G {
+rankdir=TB; nodesep=0.12; ranksep=0.28; dpi=400;
+node [fontname="Liberation Serif", fontsize=14, shape=box, style="rounded", height=0.3, margin="0.06,0.03"];
+edge [fontname="Liberation Serif", fontsize=12.5, arrowsize=0.6];
+gdp_yoy [label="GDP growth", style="rounded,filled", fillcolor="#E8E8E8"];
+inflation_yoy [label="CPI inflation", style="rounded,filled", fillcolor="#E8E8E8"];
+demand_shock [label="demand shock*", style="rounded,filled", fillcolor="#E8E8E8"];
+supply_cost_shock [label="supply-cost shock*", style="rounded,filled", fillcolor="#E8E8E8"];
+fx_shock [label="FX shock*", style="rounded,filled", fillcolor="#E8E8E8"];
+{rank=same; gdp_yoy; inflation_yoy; demand_shock; fx_shock; supply_cost_shock;}
+gross_profit [label="Gross profit", peripheries=2];
+operating_income [label="Operating income", peripheries=2];
+revenue [label="Revenue"];
+cogs [label="COGS"];
+opex [label="Opex"];
+inventory [label="Inventory"];
+receivables [label="Receivables"];
+payables [label="Payables"];
+gdp_yoy -> revenue [label=" 1.36 (L3)"];
+inflation_yoy -> revenue [label=" -1.42 (L3)"];
+revenue -> cogs [label=" 0.92"];
+inflation_yoy -> cogs [label=" -0.65 (L3)"];
+revenue -> opex [label=" 0.20 (L3)"];
+inflation_yoy -> opex [label=" 0.24 (L2)"];
+cogs -> inventory [label=" 0.74"];
+revenue -> receivables [label=" 0.69"];
+cogs -> payables [label=" 1.03"];
+demand_shock -> revenue [style=dashed, label=" 1.00"];
+fx_shock -> revenue [style=dashed, label=" 0.60"];
+supply_cost_shock -> cogs [style=dashed, label=" 1.00"];
+revenue -> gross_profit [style=dotted, arrowhead=empty];
+cogs -> gross_profit [style=dotted, arrowhead=empty];
+gross_profit -> operating_income [style=dotted, arrowhead=empty];
+opex -> operating_income [style=dotted, arrowhead=empty];
+}

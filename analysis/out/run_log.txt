@@ -1,0 +1,129 @@
+
+### hac_elasticities
+       parent       child  n  elasticity  se_ols   t_ols  se_hac   t_hac  p_hac     r2
+      gdp_yoy     revenue 68      1.3564  1.1379  1.1920  0.5910  2.2950 0.0217 0.0313
+inflation_yoy     revenue 68     -1.4179  1.2892 -1.0998  1.2002 -1.1813 0.2375 0.0313
+      revenue        cogs 68      0.9240  0.0290 31.8750  0.0433 21.3366 0.0000 0.9439
+inflation_yoy        cogs 68     -0.6505  0.2777 -2.3426  0.3248 -2.0027 0.0452 0.9439
+      revenue        opex 63      0.2005  0.0965  2.0774  0.1191  1.6833 0.0923 0.1155
+inflation_yoy        opex 63      0.2359  1.0241  0.2304  0.3803  0.6204 0.5350 0.1155
+         cogs   inventory 65      0.7381  0.2170  3.4015  0.2460  3.0011 0.0027 0.1655
+      revenue receivables 65      0.6867  0.1218  5.6359  0.1153  5.9543 0.0000 0.3467
+         cogs    payables 64      1.0315  0.1177  8.7616  0.1643  6.2769 0.0000 0.5665
+
+### forecast_dm_mase
+          target            model  n    MAPE   MASE  DM_ape  p_ape   DM_se   p_se
+            cogs      ResidualGBM 32  6.7141 0.8002 -0.5292 0.6004 -0.7679 0.4484
+            cogs SeasonalMomentum 32  6.8196 0.8419 -0.5255 0.6030 -0.8247 0.4159
+            cogs    SeasonalNaive 32  7.3026 0.8933     NaN    NaN     NaN    NaN
+            cogs    GradientBoost 32  8.1907 1.0036  0.7061 0.4854  0.9977 0.3261
+            cogs        RidgeLags 32  8.3961 1.0044  0.7800 0.4413  0.6381 0.5281
+            cogs    ResidualRidge 32  8.8729 1.0568  1.1957 0.2409  1.2417 0.2237
+            cogs             LSTM 32 12.4170 1.4731  2.1064 0.0434  1.7895 0.0833
+            cogs    DriftSeasonal 32 12.4371 1.4514  2.4343 0.0209  2.0036 0.0539
+operating_income    GradientBoost 32 13.0295 1.4044 -0.3251 0.7473  0.6302 0.5332
+operating_income    SeasonalNaive 32 13.5586 1.3957     NaN    NaN     NaN    NaN
+operating_income SeasonalMomentum 32 13.7231 1.3704  0.1019 0.9195 -0.3707 0.7134
+operating_income        RidgeLags 32 14.8298 1.3726  0.6086 0.5472 -0.7480 0.4601
+operating_income             LSTM 32 15.7034 1.5431  0.9233 0.3630  0.3805 0.7061
+operating_income    ResidualRidge 32 15.8420 1.5459  1.3586 0.1841 -0.2295 0.8200
+operating_income      ResidualGBM 32 17.6508 1.5150  0.8424 0.4060  0.7407 0.4644
+operating_income    DriftSeasonal 32 18.2625 1.6063  1.6776 0.1035  0.3934 0.6967
+         revenue SeasonalMomentum 32  7.6224 0.9908 -0.9035 0.3732 -1.7941 0.0826
+         revenue      ResidualGBM 32  7.8252 0.9796 -0.5113 0.6127 -1.0632 0.2959
+         revenue    SeasonalNaive 32  8.4945 1.1198     NaN    NaN     NaN    NaN
+         revenue        RidgeLags 32  9.3128 1.1498  0.5043 0.6176 -0.1857 0.8539
+         revenue    GradientBoost 32  9.3351 1.2676  0.6040 0.5503  0.8356 0.4098
+         revenue    ResidualRidge 32  9.9147 1.2221  0.8798 0.3858  0.3718 0.7125
+         revenue             LSTM 32 10.5719 1.3649  0.9613 0.3438  0.9603 0.3444
+         revenue    DriftSeasonal 32 12.0095 1.4503  1.6322 0.1128  0.6144 0.5434
+
+### replay_benchmarks
+                      episode        mode                           model  quarters  revenue_MAPE  op_income_MAPE  gross_margin_MAE_pp  cash_MAPE
+                     COVID-19 conditional                            twin         6         0.000           3.099                1.229     36.103
+                     COVID-19       macro                            twin         6        17.776          29.333                2.090     28.740
+                     COVID-19       macro             no-shock engine run         6        15.423          25.262                1.923     30.932
+                     COVID-19 conditional constant-margin, flat-cash rule         6         0.000          14.671                1.923      9.232
+         2022 inflation shock conditional                            twin         6         0.000          24.435                5.830     31.900
+         2022 inflation shock       macro                            twin         6        41.785          48.050                1.611     73.403
+         2022 inflation shock       macro             no-shock engine run         6        26.017          14.569                4.679     50.275
+         2022 inflation shock conditional constant-margin, flat-cash rule         6         0.000           4.436                4.679     47.639
+2018-19 China / trade tension conditional                            twin         5         0.000           2.368                0.327     41.861
+2018-19 China / trade tension       macro                            twin         5        11.339          15.918                0.252     37.437
+2018-19 China / trade tension       macro             no-shock engine run         5        14.282          21.471                0.470     36.585
+2018-19 China / trade tension conditional constant-margin, flat-cash rule         5         0.000          10.364                0.470     40.883
+
+### plug_ablation
+               scenario  twin_max_balance_error  plug_model_max_gap_vs_own_cashflow  plug_gap_pct_of_twin_final_cash  plug_model_v2_max_gap  plug_v2_gap_pct_of_twin_final_cash  twin_min_current_ratio  twin_max_current_ratio  twin_offset_entry_max_per_quarter  twin_offset_entry_cumulative  twin_final_cash
+               Baseline                     0.0                            93807.12                           209.08                9867.69                               21.99                    0.97                    1.00                           44294.55                     173440.06         44866.24
+        Inflation spike                     0.0                            73835.39                           171.75                7668.85                               17.84                    0.95                    1.02                           42128.61                     178884.10         42990.94
+     Demand contraction                     0.0                            64945.15                           152.20                6608.46                               15.49                    0.98                    1.03                           41173.94                     153310.62         42670.27
+Supply chain disruption                     0.0                            88698.36                           213.29                9271.25                               22.29                    0.94                    0.97                           43742.22                     163098.58         41585.28
+         Currency shock                     0.0                            87624.79                           198.06                9145.47                               20.67                    0.97                    1.01                           43631.39                     160816.28         44242.38
+            Stagflation                     0.0                            53689.66                           131.65                5415.91                               13.28                    0.95                    1.03                           39801.38                     161815.44         40782.82
+
+Gross-profit edge: {'b_rev': 1.1147421616143833, 'b_infl': 0.8761597467622355, 'n': 63, 'r2': 0.925214704114748}
+
+### gross_profit_ablation
+               scenario  gp_identity  gp_direct     gap  gap_pct_of_gp
+               Baseline     54770.00   54770.00    0.00           0.00
+        Inflation spike     48068.93   51682.79 3613.87           7.52
+     Demand contraction     42654.51   42284.27 -370.25          -0.87
+Supply chain disruption     44011.14   51726.17 7715.03          17.53
+         Currency shock     51167.78   51043.22 -124.56          -0.24
+            Stagflation     38112.22   42404.91 4292.69          11.26
+
+### controlled_target_test
+          target            model  n_estimators   MAPE  skill_vs_naive_%
+         revenue    GBM_level_200           200  9.290            -9.359
+         revenue GBM_residual_200           200  7.825             7.880
+            cogs    GBM_level_200           200  8.315           -13.870
+            cogs GBM_residual_200           200  6.714             8.058
+operating_income    GBM_level_200           200 13.131             3.154
+operating_income GBM_residual_200           200 17.651           -30.181
+         revenue    GBM_level_300           300  9.335            -9.895
+         revenue GBM_residual_300           300  7.933             6.608
+            cogs    GBM_level_300           300  8.191           -12.161
+            cogs GBM_residual_300           300  6.833             6.423
+operating_income    GBM_level_300           300 13.030             3.902
+operating_income GBM_residual_300           300 17.727           -30.746
+
+Opening residual line items: {'other_curr_assets': 67784.0, 'other_noncurr_assets': 182017.0, 'other_curr_liab': 84801.0, 'other_noncurr_liab': 55080.0, 'assets': 383266.0, 'balance_error': 0.0, 'period': '2026-06-27'}
+
+Decision example: {
+  "horizon_quarters": 8,
+  "opening_cash": 39544.0,
+  "calibrated_buyback_pct_ocf": 0.7724230521856098,
+  "baseline_cash_min": 40270.33834391082,
+  "stagflation_cash_min": 38663.51486328517,
+  "stagflation_op_income_total": 247011.1226302341,
+  "baseline_op_income_total": 337946.4582819999,
+  "goal_seek_feasible": true,
+  "goal_seek_solution": 0.7638793945312501,
+  "goal_seek_achieved": 39543.80405236065,
+  "goal_seek_message": "Set Buyback intensity to 0.7639 \u00d7 OCF to reach Cash (lowest point) = 39,543.80.",
+  "stagflation_shocks": {
+    "inflation_yoy": 0.0858498282755189,
+    "supply_cost_shock": 0.1,
+    "demand_shock": -0.1,
+    "gdp_yoy": -0.05179030471149437
+  },
+  "persistence": 0.85
+}
+
+### decision_tornado_cash_min_stagflation
+                 factor  kind  delta        low        high      swing  share_of_swing
+        buyback_pct_ocf lever   0.25 46535.7590 -17044.7537 63580.5127          0.5785
+dividend_pct_net_income lever   0.10 42071.1990  20215.2212 21855.9778          0.1989
+      capex_pct_revenue lever   0.02 42249.2673  22818.2691 19430.9982          0.1768
+           demand_shock shock   0.10 38663.5149  40198.7359  1535.2210          0.0140
+     effective_tax_rate lever   0.05 39135.9919  38191.0844   944.9075          0.0086
+               fx_shock shock   0.10 38241.4549  39079.1815   837.7267          0.0076
+          inflation_yoy shock   0.03 40226.7478  39531.1925   695.5554          0.0063
+                gdp_yoy shock   0.03 38884.0170  39507.2006   623.1837          0.0057
+  interest_rate_on_debt lever   0.03 38815.5166  38511.5131   304.0035          0.0028
+      supply_cost_shock shock   0.10 38572.8159  38663.5149    90.6989          0.0008
+
+Wrote analysis/out
+MC check: mean 19.851 VaR 15.297 CVaR 14.151 ($B), n=1500
+figures -> analysis/out

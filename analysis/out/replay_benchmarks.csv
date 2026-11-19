@@ -1,0 +1,13 @@
+episode,mode,model,quarters,revenue_MAPE,op_income_MAPE,gross_margin_MAE_pp,cash_MAPE
+COVID-19,conditional,twin,6,0.0,3.099,1.229,36.103
+COVID-19,macro,twin,6,17.776,29.333,2.09,28.74
+COVID-19,macro,no-shock engine run,6,15.423,25.262,1.923,30.932
+COVID-19,conditional,"constant-margin, flat-cash rule",6,0.0,14.671,1.923,9.232
+2022 inflation shock,conditional,twin,6,0.0,24.435,5.83,31.9
+2022 inflation shock,macro,twin,6,41.785,48.05,1.611,73.403
+2022 inflation shock,macro,no-shock engine run,6,26.017,14.569,4.679,50.275
+2022 inflation shock,conditional,"constant-margin, flat-cash rule",6,0.0,4.436,4.679,47.639
+2018-19 China / trade tension,conditional,twin,5,0.0,2.368,0.327,41.861
+2018-19 China / trade tension,macro,twin,5,11.339,15.918,0.252,37.437
+2018-19 China / trade tension,macro,no-shock engine run,5,14.282,21.471,0.47,36.585
+2018-19 China / trade tension,conditional,"constant-margin, flat-cash rule",5,0.0,10.364,0.47,40.883
